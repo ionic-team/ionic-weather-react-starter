@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent } from '@ionic/react';
 
-const Tab3Page: React.FC = () => {
+const UVIndexPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -14,4 +14,4 @@ const Tab3Page: React.FC = () => {
   );
 };
 
-export default Tab3Page;
+export default UVIndexPage;

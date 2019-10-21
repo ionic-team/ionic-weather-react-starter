@@ -3,8 +3,8 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { apps, flash, send } from 'ionicons/icons';
-import Tab1 from './pages/CurrentWeather';
-import Tab2 from './pages/Forecast';
+import CurrentWeatherPage from './pages/CurrentWeather';
+import ForecastPage from './pages/Forecast';
 import Tab3 from './pages/UVIndex';
 import Details from './pages/Details';
 
@@ -32,8 +32,8 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/current-weather" component={Tab1} exact={true} />
-          <Route path="/forecast" component={Tab2} exact={true} />
+          <Route path="/current-weather" component={CurrentWeatherPage} exact={true} />
+          <Route path="/forecast" component={ForecastPage} exact={true} />
           <Route path="/forecast/details" component={Details} />
           <Route path="/uv-index" component={Tab3} />
           <Route path="/" render={() => <Redirect to="/current-weather" />} exact={true} />

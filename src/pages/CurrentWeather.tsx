@@ -19,7 +19,7 @@ import { book, build, colorFill, grid } from 'ionicons/icons';
 import React from 'react';
 import './CurrentWeather.css';
 
-const Tab1: React.FC = () => {
+const CurrentWeatherPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -68,4 +68,4 @@ const Tab1: React.FC = () => {
   );
 };
 
-export default Tab1;
+export default CurrentWeatherPage;
