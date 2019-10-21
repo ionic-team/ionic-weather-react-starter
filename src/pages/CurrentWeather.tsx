@@ -17,7 +17,7 @@ import {
 } from '@ionic/react';
 import { book, build, colorFill, grid } from 'ionicons/icons';
 import React from 'react';
-import './Tab1.css';
+import './CurrentWeather.css';
 
 const Tab1: React.FC = () => {
   return (
@@ -36,8 +36,8 @@ const Tab1: React.FC = () => {
           </IonCardHeader>
           <IonCardContent>
             <p>
-              Now that your app has been created, you'll want to start building out features and
-              components. Check out some of the resources below for next steps.
+              Now that your app has been created, you'll want to start building out features and components. Check out
+              some of the resources below for next steps.
             </p>
           </IonCardContent>
         </IonCard>
