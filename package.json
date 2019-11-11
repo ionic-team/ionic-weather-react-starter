@@ -19,11 +19,17 @@
     "react-scripts": "3.2.0",
     "typescript": "3.6.3"
   },
+  "devDependencies": {
+    "@testing-library/react": "~9.3.2"
+  },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:ci": "export CI=true; react-scripts test", 
+    "test:cov": "export CI=true; react-scripts test --coverage",
+    "test:upd": "export CI=true; react-scripts test --updateSnapshot"
   },
   "eslintConfig": {
     "extends": "react-app"
