@@ -12,7 +12,8 @@ exports[`renders consistently 1`] = `
       >
         <ion-router-outlet>
           <div
-            class="ion-page ion-page-invisible"
+            class="ion-page"
+            style="z-index: 101;"
           >
             <ion-header>
               <ion-toolbar>
