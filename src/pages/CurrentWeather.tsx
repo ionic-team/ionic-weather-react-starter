@@ -1,68 +1,27 @@
-import {
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar
-} from '@ionic/react';
-import { book, build, colorFill, grid } from 'ionicons/icons';
-import React from 'react';
-import './CurrentWeather.css';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
+import React, { useRef, useState } from 'react';
+import { iconPaths } from '../util/iconPaths';
 
 const CurrentWeatherPage: React.FC = () => {
+  const [temperature] = useState(302);
+  const [condition] = useState(200);
+  const ref = useRef(null);
+  useIonViewWillEnter(() => {
+    (ref.current as any)!.iconPaths = iconPaths;
+  });
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab One</IonTitle>
+          <IonTitle>Current Weather</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonCard className="welcome-card">
-          <img src="/assets/shapes.svg" alt="" />
-          <IonCardHeader>
-            <IonCardSubtitle>Get Started</IonCardSubtitle>
-            <IonCardTitle>Welcome to Ionic</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <p>
-              Now that your app has been created, you'll want to start building out features and components. Check out
-              some of the resources below for next steps.
-            </p>
-          </IonCardContent>
-        </IonCard>
-
-        <IonList lines="none">
-          <IonListHeader>
-            <IonLabel>Resources</IonLabel>
-          </IonListHeader>
-          <IonItem href="https://ionicframework.com/docs/" target="_blank">
-            <IonIcon slot="start" color="medium" icon={book} />
-            <IonLabel>Ionic Documentation</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/building/scaffolding" target="_blank">
-            <IonIcon slot="start" color="medium" icon={build} />
-            <IonLabel>Scaffold Out Your App</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/layout/structure" target="_blank">
-            <IonIcon slot="start" color="medium" icon={grid} />
-            <IonLabel>Change Your App Layout</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/theming/basics" target="_blank">
-            <IonIcon slot="start" color="medium" icon={colorFill} />
-            <IonLabel>Theme Your App</IonLabel>
-          </IonItem>
-        </IonList>
+      <IonContent className="ion-text-center ion-padding">
+        <div className="information">
+          <kws-temperature class="primary-value" scale="F" temperature={temperature}></kws-temperature>
+        </div>
+        <kws-condition condition={condition} ref={ref}></kws-condition>
       </IonContent>
     </IonPage>
   );
