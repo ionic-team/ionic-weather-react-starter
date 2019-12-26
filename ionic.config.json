@@ -1,5 +1,7 @@
 {
   "name": "ionic-weather-react-starter",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }
