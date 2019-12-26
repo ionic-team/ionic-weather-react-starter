@@ -1,3 +1,3 @@
 import { Forecast } from './forecast';
 
-export type WeelyForecast = Array<Forecast>;
+export type WeeklyForecast = Array<Forecast>;
