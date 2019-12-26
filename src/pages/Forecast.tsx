@@ -1,32 +1,17 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonItem, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonItem, IonList, IonPage, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
+import { WeeklyForecast } from "../models";
 
 import DailyForecast from '../components/DailyForecast';
+import { weather } from '../util';
 
 const ForecastPage: React.FC = () => {
-  const [forecast] = useState([
-    [
-      {
-        temperature: 300,
-        condition: 200,
-        date: new Date(2018, 8, 19)
-      }
-    ],
-    [
-      {
-        temperature: 265,
-        condition: 601,
-        date: new Date(2018, 8, 20)
-      }
-    ],
-    [
-      {
-        temperature: 293,
-        condition: 800,
-        date: new Date(2018, 8, 21)
-      }
-    ]
-  ]);
+  const [forecast, setForecast] = useState<WeeklyForecast>([]);
+
+  useIonViewWillEnter(async () => {
+    const res = await weather.forecast();
+    setForecast(res);
+  });
 
   return (
     <IonPage>

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import { Forecast } from '../models/forecast';
-import { iconPaths } from '../util/iconPaths';
+import { Forecast } from '../models';
+import { iconPaths } from '../util';
 
 const DailyForecast: React.FC<{ forecast: Forecast; scale: string }> = ({ forecast, scale }) => {
   const elementRef = useRef(null);

@@ -31,12 +31,9 @@ exports[`renders consistently 1`] = `
                 <kws-temperature
                   class="primary-value"
                   scale="F"
-                  temperature="302"
                 />
               </div>
-              <kws-condition
-                condition="200"
-              />
+              <kws-condition />
             </ion-content>
           </div>
         </ion-router-outlet>

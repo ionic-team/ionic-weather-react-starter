@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent } from '@ionic/react';
+import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent, useIonViewWillEnter } from '@ionic/react';
+import { weather } from '../util';
 
 const UVIndexPage: React.FC = () => {
-  const [uvIndex] = useState(6.4);
-  const [riskLevel] = useState(3);
+  const [uvIndex, setUVIndex] = useState();
+  const [riskLevel, setRiskLevel] = useState();
 
   const advice: Array<string> = [
     'Wear sunglasses on bright days. If you burn easily, cover up and use broad spectrum SPF 30+ sunscreen. ' +
@@ -25,6 +26,12 @@ const UVIndexPage: React.FC = () => {
   const descriptionStyle = {
     marginTop: '16px'
   };
+
+  useIonViewWillEnter(async () => {
+    const res = await weather.uvIndex();
+    setUVIndex(res.value);
+    setRiskLevel(res.riskLevel);
+  });
 
 
   return (

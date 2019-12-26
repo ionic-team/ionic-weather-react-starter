@@ -1,13 +1,20 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
-import React, { useRef, useState } from 'react';
-import { iconPaths } from '../util/iconPaths';
+import React, { useRef, useState, useEffect } from 'react';
+import { iconPaths, weather } from '../util';
 
 const CurrentWeatherPage: React.FC = () => {
-  const [temperature] = useState(302);
-  const [condition] = useState(200);
+  const [temperature, setTemperature] = useState();
+  const [condition, setCondition] = useState();
   const ref = useRef(null);
-  useIonViewWillEnter(() => {
+
+  useEffect(() => {
     (ref.current as any)!.iconPaths = iconPaths;
+  });
+
+  useIonViewWillEnter(async ()=>{
+    const res = await weather.current();
+    setTemperature(res.temperature);
+    setCondition(res.condition);
   });
 
   return (
