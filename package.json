@@ -28,7 +28,7 @@
     "@testing-library/react": "~9.4.0"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "react-scripts build; cap copy",
     "eject": "react-scripts eject",
     "start": "react-scripts start",
     "test": "react-scripts test",
