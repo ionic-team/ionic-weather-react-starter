@@ -1,4 +1,5 @@
 import { Coordinate, UVIndex, Weather, WeeklyForecast } from '../models';
+import { Plugins } from '@capacitor/core';
 
 class WeatherService {
   private baseUrl = 'https://api.openweathermap.org/data/2.5';
@@ -26,10 +27,11 @@ class WeatherService {
   }
 
   private async currentLocation(): Promise<Coordinate> {
-    return Promise.resolve({
-      latitude: 43.073051,
-      longitude: -89.40123
-    });
+    const { coords } = await Plugins.Geolocation.getCurrentPosition();
+    return {
+      latitude: coords.latitude,
+      longitude: coords.longitude
+    };
   }
 
   private unpackWeather(data: any): Weather {

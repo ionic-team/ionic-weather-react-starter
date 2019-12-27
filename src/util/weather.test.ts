@@ -1,18 +1,15 @@
 import { weather } from './weather';
+import { Plugins } from '@capacitor/core';
 
 describe('weather service', () => {
-  let spy: any;
   beforeEach(() => {
-    spy = jest.spyOn(window, 'fetch').mockImplementation(() =>
-      Promise.resolve({
-        json: () => Promise.resolve()
-      } as any)
+    (Plugins.Geolocation.getCurrentPosition as any) = jest.fn(() =>
+      Promise.resolve({ coords: { latitude: 42.123, longitude: -73.4242 } })
     );
   });
 
-  afterEach(() => spy.mockReset());
+  afterEach(() => (Plugins.Geolocation.getCurrentPosition as any).mockRestore());
 
-  afterEach(() => spy.mockReset());
   it('exists', () => {
     expect(weather).toBeTruthy();
   });
@@ -33,7 +30,7 @@ describe('weather service', () => {
       await weather.current();
       expect(window.fetch).toHaveBeenCalledTimes(1);
       expect(window.fetch).toHaveBeenCalledWith(
-        'https://api.openweathermap.org/data/2.5/weather?lat=43.073051&lon=-89.40123&appid=357d7d7f94bf6a9b04b534db299a1a3b'
+        'https://api.openweathermap.org/data/2.5/weather?lat=42.123&lon=-73.4242&appid=357d7d7f94bf6a9b04b534db299a1a3b'
       );
     });
 
@@ -63,7 +60,7 @@ describe('weather service', () => {
       await weather.forecast();
       expect(window.fetch).toHaveBeenCalledTimes(1);
       expect(window.fetch).toHaveBeenCalledWith(
-        'https://api.openweathermap.org/data/2.5/forecast?lat=43.073051&lon=-89.40123&appid=357d7d7f94bf6a9b04b534db299a1a3b'
+        'https://api.openweathermap.org/data/2.5/forecast?lat=42.123&lon=-73.4242&appid=357d7d7f94bf6a9b04b534db299a1a3b'
       );
     });
 
@@ -119,7 +116,7 @@ describe('weather service', () => {
       await weather.uvIndex();
       expect(window.fetch).toHaveBeenCalledTimes(1);
       expect(window.fetch).toHaveBeenCalledWith(
-        'https://api.openweathermap.org/data/2.5/uvi?lat=43.073051&lon=-89.40123&appid=357d7d7f94bf6a9b04b534db299a1a3b'
+        'https://api.openweathermap.org/data/2.5/uvi?lat=42.123&lon=-73.4242&appid=357d7d7f94bf6a9b04b534db299a1a3b'
       );
     });
 
