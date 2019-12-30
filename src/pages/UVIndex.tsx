@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent, useIonViewWillEnter } from '@ionic/react';
+import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent, useIonViewWillEnter, IonLoading } from '@ionic/react';
 import { weather } from '../util';
 
 const UVIndexPage: React.FC = () => {
   const [uvIndex, setUVIndex] = useState();
   const [riskLevel, setRiskLevel] = useState();
+  const [loading, setLoading] = useState();
 
   const advice: Array<string> = [
     'Wear sunglasses on bright days. If you burn easily, cover up and use broad spectrum SPF 30+ sunscreen. ' +
@@ -28,11 +29,12 @@ const UVIndexPage: React.FC = () => {
   };
 
   useIonViewWillEnter(async () => {
+    setLoading(true);
     const res = await weather.uvIndex();
     setUVIndex(res.value);
     setRiskLevel(res.riskLevel);
+    setLoading(false);
   });
-
 
   return (
     <IonPage>
@@ -42,6 +44,7 @@ const UVIndexPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding ion-text-center">
+        <IonLoading message="Loading UV Data..." isOpen={loading}></IonLoading>
         <kws-uv-index class="primary-value" uv-index={uvIndex}></kws-uv-index>
         <div className="description" style={descriptionStyle}>
           {advice[riskLevel]}
