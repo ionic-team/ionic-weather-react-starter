@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonItem, IonList, IonPage, IonTitle, IonToolbar, useIonViewWillEnter, IonLoading } from '@ionic/react';
-import { WeeklyForecast } from "../models";
+import {
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonList,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  useIonViewWillEnter,
+  IonLoading
+} from '@ionic/react';
+import { WeeklyForecast } from '../models';
 
 import DailyForecast from '../components/DailyForecast';
-import { weather } from '../util';
+import { settings, weather } from '../util';
 
 const ForecastPage: React.FC = () => {
   const [forecast, setForecast] = useState<WeeklyForecast>([]);
   const [loading, setLoading] = useState();
+  const [scale, setScale] = useState();
 
   useIonViewWillEnter(async () => {
     setLoading(true);
+    setScale(await settings.getScale());
     const res = await weather.forecast();
     setForecast(res);
     setLoading(false);
@@ -28,7 +40,7 @@ const ForecastPage: React.FC = () => {
         <IonList>
           {forecast.map((f, index) => (
             <IonItem key={index}>
-              <DailyForecast scale="F" forecast={f}></DailyForecast>
+              <DailyForecast scale={scale} forecast={f}></DailyForecast>
             </IonItem>
           ))}
         </IonList>
