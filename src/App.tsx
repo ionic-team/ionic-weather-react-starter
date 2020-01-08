@@ -24,6 +24,8 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
+import './theme/styles.css';
+
 /* Theme variables */
 import './theme/variables.css';
 
@@ -38,7 +40,7 @@ const App: React.FC = () => (
           <Route path="/uv-index" component={Tab3} />
           <Route path="/" render={() => <Redirect to="/current-weather" />} exact={true} />
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
+        <IonTabBar slot="bottom" color="primary">
           <IonTabButton tab="tab1" href="/current-weather">
             <IonIcon icon={flash} />
             <IonLabel>Tab One</IonLabel>

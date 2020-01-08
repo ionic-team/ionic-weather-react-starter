@@ -105,6 +105,7 @@ exports[`App Component renders consistently 1`] = `
         </ion-router-outlet>
       </div>
       <ion-tab-bar
+        color="primary"
         current-path="/current-weather"
         selected-tab="tab1"
         slot="bottom"

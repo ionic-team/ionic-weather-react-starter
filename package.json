@@ -12,21 +12,22 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@ionic/react": "^4.11.0",
-    "@ionic/react-router": "^4.11.0",
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.12",
-    "@types/react": "^16.9.5",
-    "@types/react-dom": "^16.9.1",
-    "@types/react-router": "^5.1.1",
-    "@types/react-router-dom": "^5.1.0",
+    "@ionic/react": "~4.11.7",
+    "@ionic/react-router": "~4.11.7",
+    "@types/jest": "~24.0.25",
+    "@types/node": "~13.1.5",
+    "@types/react": "~16.9.17",
+    "@types/react-dom": "~16.9.4",
+    "@types/react-router": "~5.1.4",
+    "@types/react-router-dom": "~5.1.3",
     "ionicons": "^4.6.3",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "kws-weather-widgets": "~2.0.2",
+    "react": "~16.12.0",
+    "react-dom": "~16.12.0",
     "react-router": "^5.1.0",
     "react-router-dom": "^5.1.0",
-    "react-scripts": "3.2.0",
-    "typescript": "3.6.3"
+    "react-scripts": "~3.3.0",
+    "typescript": "~3.7.4"
   },
   "devDependencies": {
     "@testing-library/react": "~9.4.0"
