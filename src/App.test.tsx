@@ -19,22 +19,12 @@ describe('App Component', () => {
   });
 
   it.each([
-    [ 0, 'Tab One' ],
-    [ 1, 'Tab Two' ],
-    [ 2, 'Tab Three' ],
+    [ 0, 'Current Weather' ],
+    [ 1, 'Forecast' ],
+    [ 2, 'UV Index' ],
   ])('contains the proper text for tab %i', (tab, text)=> {
     const { container } = render(<App />);
     const tabs = container.querySelectorAll('ion-tab-button');
     expect(tabs[tab as number].textContent).toEqual(text);
   });
-
-  [
-    { tab: 0, text: 'Tab One' },
-    { tab: 1, text: 'Tab Two' },
-    { tab: 2, text: 'Tab Three' },
-  ].forEach(test => it(`displays the proper text for tab ${test.tab} (alt)`, () => {
-    const { container } = render(<App />);
-    const tabs = container.querySelectorAll('ion-tab-button');
-    expect(tabs[test.tab].textContent).toEqual(test.text);
-  }));
 });

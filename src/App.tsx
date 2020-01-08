@@ -2,11 +2,10 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, flash, send } from 'ionicons/icons';
+import { cloud, calendar, sunny } from 'ionicons/icons';
 import CurrentWeatherPage from './pages/CurrentWeather';
 import ForecastPage from './pages/Forecast';
 import Tab3 from './pages/UVIndex';
-import Details from './pages/Details';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,22 +35,21 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path="/current-weather" component={CurrentWeatherPage} exact={true} />
           <Route path="/forecast" component={ForecastPage} exact={true} />
-          <Route path="/forecast/details" component={Details} />
           <Route path="/uv-index" component={Tab3} />
           <Route path="/" render={() => <Redirect to="/current-weather" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom" color="primary">
           <IonTabButton tab="tab1" href="/current-weather">
-            <IonIcon icon={flash} />
-            <IonLabel>Tab One</IonLabel>
+            <IonIcon icon={cloud} />
+            <IonLabel>Current Weather</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/forecast">
-            <IonIcon icon={apps} />
-            <IonLabel>Tab Two</IonLabel>
+            <IonIcon icon={calendar} />
+            <IonLabel>Forecast</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/uv-index">
-            <IonIcon icon={send} />
-            <IonLabel>Tab Three</IonLabel>
+            <IonIcon icon={sunny} />
+            <IonLabel>UV Index</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
